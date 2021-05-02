@@ -1,14 +1,15 @@
-workspace "GLFW"
-	architecture "x64"
-	outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+-- workspace "GLFW"
+-- 	architecture "x64"
+-- 	outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-	configurations
-	{
-		"Debug",
-		"Release"
-	}
+-- 	configurations
+-- 	{
+-- 		"Debug",
+-- 		"Release",
+--		"MinSizeRelease"
+-- 	}
 
-project "GLFW"
+project "glfw3"
 	kind "StaticLib"
 	language "C"
 
@@ -79,5 +80,9 @@ project "GLFW"
 		symbols "On"
 
 	filter "configurations:Release"
+		runtime "Release"
+		optimize "On"
+
+	filter "configurations:MinSizeRelease"
 		runtime "Release"
 		optimize "On"
