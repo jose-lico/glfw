@@ -30,7 +30,7 @@ project "glfw3"
 	}
 
 	filter "system:windows"
-		staticruntime "off"
+		staticruntime "On"
 		systemversion "latest"
 
 		files
