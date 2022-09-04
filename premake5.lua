@@ -1,20 +1,12 @@
--- workspace "GLFW"
--- 	architecture "x64"
--- 	outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
--- 	configurations
--- 	{
--- 		"Debug",
--- 		"Release",
---		"MinSizeRelease"
--- 	}
-
 project "glfw3"
 	kind "StaticLib"
 	language "C"
+	configmap {
+        ["ReleaseNoImGui"] = "Release"
+    }
 
-	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
-	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
+	targetdir ("%{wks.location}/bin/" .. outputDir .. "/%{prj.name}")
+	objdir ("%{wks.location}/bin-int/" .. outputDir .. "/%{prj.name}")
 
 	files
 	{
@@ -25,7 +17,6 @@ project "glfw3"
 		"src/init.c",
 		"src/input.c",
 		"src/monitor.c",
-		"src/vulkan.c",
 		"src/window.c"
 	}
 
@@ -80,9 +71,5 @@ project "glfw3"
 		symbols "On"
 
 	filter "configurations:Release"
-		runtime "Release"
-		optimize "On"
-
-	filter "configurations:MinSizeRelease"
 		runtime "Release"
 		optimize "On"
