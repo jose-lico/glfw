@@ -3,7 +3,7 @@ project "glfw3"
 	language "C"
 	configmap 
 	{
-		["ReleaseWithInfo"] = "Release"
+		["ReleaseWithInfo"] = "Release",
 		["ReleaseNoImGui"] = "Release"
 	}
 
